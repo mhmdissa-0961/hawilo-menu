@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Hawilo Grill — Menu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Cairo:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B1714;
+    --ink-soft:#4A423B;
+    --ember:#D6491F;
+    --ember-dark:#AE3714;
+    --cream:#F6F1E7;
+    --cream-card:#FFFDF9;
+    --gold:#A9792C;
+    --line:#E4DBC9;
+    --shadow: 0 10px 24px -14px rgba(27,23,20,.35);
+    --radius: 14px;
+    --maxw: 1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .ar{ font-family:'Cairo', sans-serif; direction:rtl; unicode-bidi:isolate; }
+  img{ max-width:100%; display:block; }
+  a{ color:inherit; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    color:#fff;
+    background:#1B1714;
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute; inset:0;
+    background-size:cover; background-position:center;
+    filter:saturate(1.05);
+  }
+  .hero-scrim{
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(15,12,10,.55) 0%, rgba(15,12,10,.72) 55%, rgba(15,12,10,.94) 100%);
+  }
+  .hero-inner{
+    position:relative;
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:56px 24px 40px;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:18px;
+  }
+  .hero-logo{
+    width:78px; height:78px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid rgba(255,255,255,.85);
+    box-shadow:0 8px 20px rgba(0,0,0,.35);
+  }
+  .hero h1{
+    font-family:'Oswald', sans-serif;
+    font-weight:700;
+    font-size:clamp(2.4rem, 6vw, 3.6rem);
+    letter-spacing:.01em;
+    margin:0;
+    line-height:1.02;
+  }
+  .hero-tagline{
+    font-size:1.05rem;
+    color:#EFE6D4;
+    margin:0;
+  }
+  .hero-tagline .ar{ font-size:1.05rem; color:#EFE6D4; }
+  .hero-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 22px;
+    margin-top:6px;
+    font-size:.95rem;
+    color:#D8CDB9;
+  }
+  .hero-meta a{ text-decoration:none; }
+  .hero-meta a:hover{ color:#fff; }
+  .hero-cta{
+    margin-top:6px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--ember);
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+    font-size:.95rem;
+    padding:12px 22px;
+    border-radius:999px;
+    transition:background .18s ease, transform .18s ease;
+  }
+  .hero-cta:hover{ background:var(--ember-dark); transform:translateY(-1px); }
+
+  /* ---------- Sticky nav ---------- */
+  .catnav-wrap{
+    position:sticky; top:0; z-index:40;
+    background:var(--cream);
+    border-bottom:1px solid var(--line);
+  }
+  .catnav{
+    max-width:var(--maxw);
+    margin:0 auto;
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    padding:12px 24px;
+    scrollbar-width:none;
+  }
+  .catnav::-webkit-scrollbar{ display:none; }
+  .catpill{
+    flex:0 0 auto;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:9px 16px;
+    border-radius:999px;
+    background:transparent;
+    border:1px solid var(--line);
+    color:var(--ink-soft);
+    font-size:.88rem;
+    font-weight:600;
+    text-decoration:none;
+    white-space:nowrap;
+    transition:background .16s ease, color .16s ease, border-color .16s ease;
+  }
+  .catpill img{ width:18px; height:18px; object-fit:contain; border-radius:4px; }
+  .catpill:hover{ border-color:var(--ember); color:var(--ink); }
+  .catpill.active{
+    background:var(--ink);
+    border-color:var(--ink);
+    color:#fff;
+  }
+
+  /* ---------- Sections ---------- */
+  main{ max-width:var(--maxw); margin:0 auto; padding:8px 24px 60px; }
+  .category-section{ padding-top:46px; scroll-margin-top:66px; }
+  .category-head{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:22px;
+    padding-bottom:12px;
+    border-bottom:2px solid var(--ink);
+  }
+  .category-head img{ width:34px; height:34px; object-fit:contain; border-radius:6px; }
+  .category-head h2{
+    font-family:'Oswald', sans-serif;
+    font-weight:600;
+    font-size:1.55rem;
+    margin:0;
+    color:var(--ink);
+  }
+  .category-head .ar{ font-size:1.1rem; color:var(--ink-soft); font-weight:600; }
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));
+    gap:20px;
+  }
+  .card{
+    background:var(--cream-card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    opacity:0;
+    transform:translateY(10px);
+    transition:opacity .5s ease, transform .5s ease;
+  }
+  .card.in-view{ opacity:1; transform:translateY(0); }
+  .card-media{
+    position:relative;
+    aspect-ratio:4/3;
+    overflow:hidden;
+    background:#EDE4D2;
+  }
+  .card-media img{
+    width:100%; height:100%; object-fit:cover;
+    transition:transform .5s ease;
+  }
+  .card:hover .card-media img{ transform:scale(1.06); }
+  .card-price{
+    position:absolute; right:10px; bottom:10px;
+    background:var(--ink);
+    color:#fff;
+    font-weight:700;
+    font-size:.82rem;
+    letter-spacing:.02em;
+    padding:6px 12px;
+    border-radius:999px;
+  }
+  .card-body{ padding:16px 16px 18px; }
+  .card-body h3{
+    font-family:'Oswald', sans-serif;
+    font-weight:500;
+    font-size:1.08rem;
+    margin:0 0 6px;
+    color:var(--ink);
+  }
+  .card-body p{
+    margin:0;
+    font-size:.88rem;
+    color:var(--ink-soft);
+    line-height:1.5;
+  }
+  .card.no-image .card-body{ padding-top:18px; }
+  .card.no-image{ display:flex; flex-direction:column; }
+  .card-price-inline{
+    display:inline-block;
+    margin-top:10px;
+    background:var(--ink);
+    color:#fff;
+    font-weight:700;
+    font-size:.82rem;
+    padding:6px 12px;
+    border-radius:999px;
+  }
+
+  footer{
+    background:var(--ink);
+    color:#D8CDB9;
+    padding:34px 24px;
+    text-align:center;
+    font-size:.85rem;
+  }
+  footer .fname{
+    font-family:'Oswald', sans-serif;
+    color:#fff;
+    font-size:1.1rem;
+    margin-bottom:6px;
+  }
+  footer a{ text-decoration:none; color:#D8CDB9; }
+  footer a:hover{ color:#fff; }
+
+  @media (max-width:520px){
+    .hero-inner{ padding:44px 18px 32px; }
+    main{ padding:8px 18px 50px; }
+    .grid{ grid-template-columns:1fr 1fr; gap:12px;}
+    .card-body{ padding:12px; }
+    .card-body h3{ font-size:.95rem; }
+    .card-body p{ font-size:.8rem; }
+  }
+  @media (max-width:380px){
+    .grid{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-bg" style="background-image:url('https://rest.thrubits.com/uploads/restorants/e01bb67a-8b4e-44b6-a4ca-37e3ca2b3601_cover.jpg')"></div>
+  <div class="hero-scrim"></div>
+  <div class="hero-inner">
+    <img class="hero-logo" src="https://rest.thrubits.com/uploads/restorants/7e2dcc0e-4478-4bc4-b30e-202365fb3da5_large.jpg" alt="Hawilo Grill logo">
+    <h1>Hawilo Grill</h1>
+    <p class="hero-tagline"><span class="ar">هويلو ساندويش عالفحم</span> — Charcoal-Grilled Sandwiches</p>
+    <div class="hero-meta">
+      <a href="https://www.google.com/maps/search/?api=1&query=Tyre%2C+South+Governorate%2C+Lebanon" target="_blank" rel="noopener">Tyre, South Governorate, Lebanon</a>
+      <a href="tel:71339048">71 339 048</a>
+    </div>
+    <a class="hero-cta" href="https://wa.me/71339048" target="_blank" rel="noopener">Order on WhatsApp</a>
+  </div>
+</header>
+
+<div class="catnav-wrap">
+  <nav class="catnav" id="catnav" aria-label="Menu categories"></nav>
+</div>
+
+<main id="menu"></main>
+
+<footer>
+  <div class="fname">Hawilo Grill</div>
+  <div><span class="ar">هويلو ساندويش عالفحم</span></div>
+  <div style="margin-top:10px;">
+    <a href="https://www.google.com/maps/search/?api=1&query=Tyre%2C+South+Governorate%2C+Lebanon" target="_blank" rel="noopener">Tyre, South Governorate, Lebanon</a>
+    &nbsp;·&nbsp;
+    <a href="tel:71339048">71 339 048</a>
+  </div>
+</footer>
+
+<script>
+const MENU = [
+  {
+    id:"burger", title:"Burger", ar:"برغر",
+    icon:"https://rest.thrubits.com/uploads/restorants_icon/1679597621.png",
+    items:[
+      {img:"59ba4d09-2b3e-4f00-968b-8c68b6b6fb3e_medium.jpg", name:"Cheese Burger", desc:"100g grilled beef patty, cheddar cheese slice, tomato, pickles, cocktail sauce, cheddar sauce, iceberg lettuce.", price:"550,000 L.L."},
+      {img:"ce4269c9-6e3e-4165-ad8a-21e9e1cf42dd_medium.jpg", name:"BBQ Burger", desc:"100g grilled beef patty, caramelized onion, cheddar slice, tomato, pickles, iceberg lettuce, BBQ and cheddar sauce.", price:"600,000 L.L."},
+      {img:"44398020-0039-4cd0-b49f-865cfb370a3e_medium.jpg", name:"Crunchy Honey Mustard", desc:"120g fried chicken dipped in honey mustard, Sitos chips, tomato, pickles, iceberg lettuce, cheddar sauce, cocktail sauce.", price:"600,000 L.L."},
+      {img:"d6241486-e870-4485-980f-1501c9a0b7ba_medium.jpg", name:"Lebanese Burger", desc:"100g grilled beef patty, coleslaw, tomato, pickles, ketchup, fries.", price:"600,000 L.L."},
+      {img:"7e3ef886-0c7d-489d-8462-8a2275d189da_medium.jpg", name:"Twist Burger", desc:"100g grilled beef patty, mozzarella patty, Sitos chips, BBQ, honey mustard, secret sauce, cheddar sauce, tortilla bread.", price:"750,000 L.L."},
+      {img:"1fb4402a-2868-48a3-8773-778b077a17df_medium.jpg", name:"Beef Mozzarella Burger", desc:"100g grilled beef patty, mozzarella patty, cheddar slice, cheddar sauce, cocktail sauce, tomato, pickles, iceberg lettuce.", price:"750,000 L.L."},
+      {img:"e372c1ff-8e6d-441d-b347-4a3dcc033760_medium.jpg", name:"BBQ Zinger", desc:"120g fried crunchy chicken dipped in BBQ sauce, pickles, tomato, iceberg lettuce, cheddar sauce, mayonnaise.", price:"600,000 L.L."},
+      {img:"fba86508-09d9-4266-be6d-acc424e45458_medium.jpg", name:"Buffalo Zinger", desc:"120g fried crunchy chicken dipped in buffalo sauce, jalapeños, tomato, iceberg lettuce, cheddar sauce, mayonnaise.", price:"600,000 L.L."},
+      {img:"ad1e583d-7dc3-4ea9-90a8-e150d35a2d75_medium.jpg", name:"Cheesy Mozzarella Zinger", desc:"120g fried crunchy chicken, mozzarella patty, pickles, tomato, iceberg lettuce, avocado sauce, cheddar sauce.", price:"750,000 L.L."},
+      {img:"d35ea2c0-c67d-4529-a6ff-726338411998_medium.jpg", name:"Hawilo Burger", desc:"120g fried crunchy chicken, mozzarella patty, pickles, tomato, iceberg lettuce, Sitos chips, secret sauce, BBQ, honey mustard, cheddar sauce.", price:"750,000 L.L."},
+      {img:"c5389667-afe9-4d7d-8322-88be961efe3e_medium.jpg", name:"Mozzarella Chicken Burger", desc:"120g fried chicken, mozzarella patty, cheddar slice, pickles, tomato, iceberg lettuce, cheddar sauce, cocktail sauce.", price:"650,000 L.L."},
+      {img:"3ad107d8-d332-4eaa-94a6-a1dd66b34b1a_medium.jpg", name:"Zinger", desc:"120g fried crunchy chicken, avocado sauce, mayonnaise, pickles, tomato, iceberg lettuce.", price:"600,000 L.L."},
+      {img:"051f3d5d-edcc-44c6-81d4-533752b3f5f2_medium.jpg", name:"Fries with Cheese", desc:"150g French fries dipped in cheddar cheese.", price:"450,000 L.L."},
+      {img:"08569af0-f182-462e-96b0-878a8e1f2979_medium.jpg", name:"Spicy Chicken Burger", desc:"120g fried crunchy chicken, chip sticks, jalapeños, tomato, iceberg lettuce, cheddar sauce, red hot sauce, sriracha sauce.", price:"650,000 L.L."},
+      {img:"b551fb07-1d26-4e1d-b3d6-7154cfc7f1f3_medium.jpg", name:"Classic Burger", desc:"Beef patty, mayonnaise, lettuce, cocktail sauce, tomato, onion, cheese.", price:"550,000 L.L."},
+      {img:"bc09b1f3-de6b-4b08-971b-57aa7c01185e_medium.jpg", name:"American Burger", desc:"100g grilled beef patty, grilled onion, mushroom and green pepper with secret sauce, cocktail sauce, cheddar cheese, tomato, pickles, iceberg lettuce.", price:"600,000 L.L."},
+      {img:"d0f48f4e-aa6d-4f93-9eb9-7a7b47400bc2_medium.jpg", name:"Mexican Burger", desc:"100g grilled beef patty, grilled onion, jalapeños and green pepper with secret hot sauce, cocktail sauce, cheddar sauce, cheddar slice, jalapeños, tomato, iceberg lettuce.", price:"600,000 L.L."},
+      {img:"59bb058a-a46d-44ab-8a32-0613cd9f8d61_medium.jpg", name:"Chicken Breast", desc:"120g grilled chicken, corn, pickles, iceberg lettuce, tomato, cheddar sauce, cocktail sauce.", price:"600,000 L.L."},
+      {img:"442db29c-8c1c-4b3d-ba0b-8bc18ed0c6d9_medium.jpg", name:"Escalope Burger", desc:"120g fried chicken escalope, coleslaw, French fries, ketchup, pickles, tomato.", price:"600,000 L.L."},
+      {img:"3802e8c5-1778-4d69-a8f6-40401451b109_medium.jpg", name:"Swiss Mushroom Burger", desc:"100g grilled beef patty, mushroom sauce, Emmental cheese slice, iceberg lettuce, mayonnaise, cheddar sauce.", price:"700,000 L.L."},
+      {img:"7cb456f6-0c68-4622-9db2-43c230f747cd_medium.jpg", name:"Double Beef Patty", desc:"Two 100g grilled beef patties, mozzarella patty, cheddar cheese, cocktail sauce, pickles, tomato, iceberg lettuce, caramelized onion, cheddar cheese slice.", price:"950,000 L.L."},
+      {img:"6a60cc30-6472-43fa-83ac-1e2d2e3b33bb_medium.jpg", name:"Crunchy Escalope Zinger", desc:"120g fried chicken escalope, Sitos chips, pickles, tomato, iceberg lettuce, cheddar sauce, cocktail sauce.", price:"650,000 L.L."},
+      {img:"2500c3c3-c5a1-4db8-927f-199d844e2e25_medium.jpg", name:"Joy Boy Burger", desc:"Fried chicken with honey mustard sauce, iceberg lettuce, mayonnaise, cocktail sauce, pickles, mozzarella patty, chip sticks.", price:"750,000 L.L."},
+      {img:"7736d205-08a5-434a-b6d7-37b38d3239a8_medium.jpg", name:"Badboy Burger", desc:"Mozzarella patty, 120g fried chicken dipped in BBQ sauce, cocktail sauce, cheddar sauce, chip sticks, pickles, tomato, iceberg lettuce.", price:"750,000 L.L."},
+      {img:"c2749ae9-1a4f-4924-a8c7-a943c419a0bb_medium.jpg", name:"Redhot Burger", desc:"120g fried chicken dipped in buffalo sauce, mozzarella patty, chip sticks, tomato, pickles, cheddar sauce, cocktail sauce, iceberg lettuce.", price:"750,000 L.L."}
+    ]
+  },
+  {
+    id:"sandwiches", title:"Sandwiches", ar:"سندويشات",
+    icon:"https://rest.thrubits.com/uploads/restorants_icon/1679597748.png",
+    items:[
+      {img:"497d89e4-b841-4495-a8aa-a2a165d95dcd_medium.jpg", name:"Crispy Sandwich", desc:"120g fried crispy strips, coleslaw, ketchup, French fries, pickles.", price:"550,000 L.L."},
+      {img:"47ca388c-508e-498c-86de-a2a8d2871fda_medium.jpg", name:"French Fries Sandwich", desc:"French fries, toum sauce, coleslaw, ketchup, pickles.", price:"150,000 L.L."},
+      {img:"71d301b8-90c3-474b-aac1-d055752860e8_medium.jpg", name:"Beef Chunks Sandwich", nameAr:"لحمة شقف", desc:"Two beef skewers with hummus, fries, grilled tomato & onion, pickles, parsley salad.", price:"400,000 L.L."},
+      {img:"62965e1a-c4f4-4ffc-a608-407680826e52_medium.jpg", name:"Kafta", nameAr:"كفتة", desc:"Two kafta skewers with hummus, fries, pickles, grilled tomato & onion, parsley salad.", price:"400,000 L.L."},
+      {img:"799aa2ce-3b3b-4baf-9b7a-bd0daddb6c7f_medium.jpg", name:"Charcoal Chicken", nameAr:"دجاج عالفحم", desc:"Toum sauce, hot sauce, pickles, fries.", price:"450,000 L.L."},
+      {img:"afe4a332-5ff6-4337-a4d3-384848c20762_medium.jpg", name:"Escalope", desc:"120g fried chicken escalope, coleslaw, ketchup, pickles, fries.", price:"550,000 L.L."},
+      {img:"478f0f7c-8955-4d19-a85e-883fb1682da4_medium.jpg", name:"Twister", desc:"120g fried crispy strips, pickles, tomato, iceberg lettuce, avocado sauce, cheddar cheese.", price:"650,000 L.L."},
+      {img:"cbae9172-a438-45e6-9a5c-f35a923e2031_medium.jpg", name:"Tawouk", desc:"100g tawouk chicken, pickles, fries, coleslaw, toum sauce.", price:"450,000 L.L."},
+      {img:"7c9a924b-6821-4a7e-a7fd-a184cf29c48d_medium.jpg", name:"Charcoal Makanek Sandwich", nameAr:"ساندويش مقانق عالفحم", desc:"Toum, pickles, tomato, fries, 100g beef makanek.", price:"400,000 L.L."},
+      {img:"d6a5a477-0b3e-4079-8149-f0ea1bb2cd44_medium.jpg", name:"Crispy Twister", desc:"120g crispy chicken, fries, coleslaw, pickles, toum, ketchup.", price:"650,000 L.L."}
+    ]
+  },
+  {
+    id:"meals", title:"Meals", ar:"وجبات",
+    icon:"https://rest.thrubits.com/uploads/restorants_icon/1679597841.png",
+    items:[
+      {img:"5a30a175-3328-4c5e-9707-3944e5621201_medium.jpg", name:"Small Chicken Meal", nameAr:"وجبة دجاج صغيرة", desc:"One charcoal chicken sandwich, French fries, toum sauce, hot spicy sauce.", price:"650,000 L.L."},
+      {img:"00a08b2c-e0a1-42f6-9436-84cdb62bd362_medium.jpg", name:"Crazy Boneless", desc:"4 fried chicken strips, cheddar sauce, BBQ sauce, chip sticks, jalapeños.", price:"950,000 L.L."},
+      {img:"636fd7cc-4b9b-499d-999c-11ec15231883_medium.jpg", name:"Crispy Meal", desc:"5 crispy strips, French fries, coleslaw, pickles, toum, ketchup.", price:"950,000 L.L."},
+      {img:"01324f9c-c750-4878-944e-4091c7024db0_medium.jpg", name:"Large Chicken Meal", nameAr:"وجبة دجاج كبيرة", desc:"Sauce cup, 2 chicken sandwiches, fries.", price:"1,000,000 L.L."},
+      {img:"58eb9f1a-623c-4bb3-9fd9-0283c8d12c07_medium.jpg", name:"Escalope Meal", nameAr:"وجبة اسكالوب", desc:"3 fried chicken escalope, coleslaw, French fries, ketchup, toum sauce, pickles.", price:"950,000 L.L."}
+    ]
+  },
+  {
+    id:"sub", title:"Sub", ar:"صب",
+    icon:"https://rest.thrubits.com/uploads/restorants_icon/1743784739.jpeg",
+    items:[
+      {img:"0366c2da-e000-4a39-b91c-e97e05edb9b9_medium.jpg", name:"Chicken Sub", desc:"", price:"600,000 L.L."},
+      {img:"41783043-bbac-49cc-af66-dc1af09f6f15_medium.jpg", name:"Quesadilla", desc:"Chicken, mushroom, corn, bell pepper, cheese, lettuce, onion, avocado sauce, mayonnaise.", price:"600,000 L.L."},
+      {img:"9f9dbcb9-58c0-4103-9257-1832138ad40a_medium.jpg", name:"Fajita", desc:"Onion, bell pepper, chicken, cheese, lettuce, avocado sauce, mushroom, corn, garlic mayo sauce.", price:"600,000 L.L."},
+      {img:"c293fc3c-8fd3-43fc-85bd-9671fdc29ca6_medium.jpg", name:"Chinese", desc:"Chicken, spicy sauce, mushroom, bell pepper, corn, cheese, mayonnaise, onion.", price:"600,000 L.L."},
+      {img:"db462104-69cf-4994-ab99-2f96ed107376_medium.jpg", name:"Mexican", desc:"Chicken, bell pepper, lettuce, corn, mayonnaise, spicy sauce, pickles.", price:"600,000 L.L."},
+      {img:"fa1b3e11-08a8-4b75-a5a0-413d7ba2ea77_medium.jpg", name:"Chicken Paramoda", desc:"Chicken pieces, mushroom, onion, mayonnaise, mozzarella cheese. Served with fries.", price:"600,000 L.L."},
+      {img:"5602898a-42ca-4aab-a929-d1c8e4f9932e_medium.jpg", name:"Steak Sub", desc:"Grilled steak, mushroom, onion, mozzarella, mayonnaise.", price:"700,000 L.L."},
+      {img:"fd09a011-f723-4a87-8484-6a0ac800bda0_medium.jpg", name:"Philadelphia", desc:"Grilled steak, mushroom, onion, bell pepper, corn, mozzarella, mayonnaise.", price:"700,000 L.L."}
+    ]
+  },
+  {
+    id:"strips", title:"Chicken Strips", ar:"ستريبس دجاج",
+    icon:"https://rest.thrubits.com/uploads/restorants_icon/1743784384.jpeg",
+    items:[
+      {img:"fe1f0372-3dab-445d-8850-565e6856ab70_medium.jpg", name:"Buffalo Strips", desc:"5 pieces, French fries, sauce cup.", price:"950,000 L.L."},
+      {img:"3c1abf6f-de60-4583-b555-14a3eb1a7efd_medium.jpg", name:"BBQ Strips", desc:"5 pieces, French fries, sauce cup.", price:"950,000 L.L."},
+      {img:"e4df6e1b-0175-4d1b-9444-27121aa9c2ba_medium.jpg", name:"BBQ Wrap", desc:"3 BBQ strip pieces, iceberg lettuce, cheddar, pickles, tomato, BBQ sauce.", price:"650,000 L.L."},
+      {img:"03f98cb2-6118-461f-8aed-41bf1a035577_medium.jpg", name:"Buffalo Wrap", desc:"3 buffalo strip pieces, jalapeño, tomato, cheddar, iceberg lettuce, cocktail sauce, buffalo sauce.", price:"650,000 L.L."}
+    ]
+  },
+  {
+    id:"kids", title:"Kids Meal", ar:"وجبة أطفال",
+    icon:"https://rest.thrubits.com/uploads/restorants_icon/1759834293.jpeg",
+    items:[
+      {img:"0f5ccc0d-fe1c-4f97-a3ec-4c3dc870acc3_medium.jpg", name:"Chicken Nuggets", desc:"6 nuggets, French fries, ketchup, 1 juice drink.", price:"600,000 L.L."},
+      {img:"306b9eab-9eac-4bf7-b426-61e8c78d5e97_medium.jpg", name:"Chicken Tenders", desc:"3 chicken tenders, French fries, ketchup, 1 juice drink.", price:"600,000 L.L."}
+    ]
+  },
+  {
+    id:"appetizers", title:"Appetizers", ar:"مقبلات",
+    icon:"https://rest.thrubits.com/uploads/restorants_icon/1743784246.jpeg",
+    items:[
+      {img:"4efb98bf-b7a9-448a-867e-fb2413959e7c_medium.jpg", name:"Mozzarella Sticks", desc:"5 pieces.", price:"400,000 L.L."},
+      {img:"1f25a9d4-7c1e-4d68-ac76-a8e2f33e3a92_medium.jpg", name:"Cheddar Spicy Triangles", desc:"4 pieces.", price:"500,000 L.L."},
+      {img:"e7ded61e-28d4-4fd8-b2a6-8683b17109ea_medium.jpg", name:"Small Fries", desc:"Served with a ketchup cup.", price:"250,000 L.L."},
+      {img:"68a7b4a9-1594-4799-b4b3-8ef024b7ac80_medium.jpg", name:"Large Fries", desc:"", price:"500,000 L.L."},
+      {img:"2768fa2f-5456-4b38-8775-347a19d4fdcc_medium.jpg", name:"Combo", desc:"3 cheese balls, 3 spicy cheddar triangles, 3 mozzarella sticks, curly fries, any 2 sauces.", price:"950,000 L.L."},
+      {img:"e087f114-823a-44a8-90fc-af54369c6dde_medium.jpg", name:"Curly Fries", desc:"Served with cocktail sauce.", price:"600,000 L.L."},
+      {img:"47b7870c-41e8-47f5-b5da-c5b052434c3d_medium.jpg", name:"Cheese Balls", desc:"5 pieces.", price:"500,000 L.L."},
+      {img:"6d843197-4205-49e4-ad7c-67f5b6d228eb_medium.jpg", name:"Mozzarella Bricks", desc:"3 mozzarella bricks, your choice of BBQ, honey mustard, or buffalo dip.", price:"600,000 L.L."}
+    ]
+  },
+  {
+    id:"drinks", title:"Drinks", ar:"مشروبات",
+    icon:"https://rest.thrubits.com/uploads/restorants_icon/1679597934.png",
+    items:[
+      {img:"8482239e-94f2-44c6-aa85-1e48698b9e60_medium.jpg", name:"Pepsi", desc:"", price:"100,000 L.L."},
+      {img:"a7a2157a-7e94-4758-839b-c5bceba589bc_medium.jpg", name:"7Up", desc:"", price:"100,000 L.L."},
+      {img:"d9b0ec7a-93d4-40bb-a4ef-2b496e70f9b5_medium.jpg", name:"Mirinda", desc:"", price:"100,000 L.L."},
+      {img:"7a76f8f0-cfa8-48e7-966b-12930b4c9676_medium.jpg", name:"Pepsi Can", desc:"", price:"100,000 L.L."},
+      {img:"1b1cfb76-f1bc-430b-acbb-9d41a25ba2bd_medium.jpg", name:"7Up Can", desc:"", price:"100,000 L.L."},
+      {img:"e4dcf767-97ce-408a-9b18-c8a6f10b6d70_medium.jpg", name:"Ice Tea", desc:"", price:"100,000 L.L."}
+    ]
+  }
+];
+
+const IMG_BASE = "https://rest.thrubits.com/uploads/restorants/";
+
+const navEl = document.getElementById('catnav');
+const mainEl = document.getElementById('menu');
+
+MENU.forEach(cat => {
+  // nav pill
+  const pill = document.createElement('a');
+  pill.href = `#${cat.id}`;
+  pill.className = 'catpill';
+  pill.dataset.target = cat.id;
+  pill.innerHTML = `<img src="${cat.icon}" alt="">${cat.title}`;
+  navEl.appendChild(pill);
+
+  // section
+  const section = document.createElement('section');
+  section.className = 'category-section';
+  section.id = cat.id;
+
+  const head = document.createElement('div');
+  head.className = 'category-head';
+  head.innerHTML = `<img src="${cat.icon}" alt=""><h2>${cat.title}</h2><span class="ar">${cat.ar}</span>`;
+  section.appendChild(head);
+
+  const grid = document.createElement('div');
+  grid.className = 'grid';
+
+  cat.items.forEach(item => {
+    const card = document.createElement('article');
+    card.className = item.img ? 'card' : 'card no-image';
+
+    const nameLine = item.nameAr
+      ? `${item.name} <span class="ar" style="font-size:.82em; color:var(--ink-soft); font-weight:600;">${item.nameAr}</span>`
+      : item.name;
+
+    if (item.img) {
+      card.innerHTML = `
+        <div class="card-media">
+          <img src="${IMG_BASE}${item.img}" alt="${item.name}" loading="lazy">
+          <span class="card-price">${item.price}</span>
+        </div>
+        <div class="card-body">
+          <h3>${nameLine}</h3>
+          ${item.desc ? `<p>${item.desc}</p>` : ''}
+        </div>`;
+    } else {
+      card.innerHTML = `
+        <div class="card-body">
+          <h3>${nameLine}</h3>
+          ${item.desc ? `<p>${item.desc}</p>` : ''}
+          <span class="card-price-inline">${item.price}</span>
+        </div>`;
+    }
+    grid.appendChild(card);
+  });
+
+  section.appendChild(grid);
+  mainEl.appendChild(section);
+});
+
+// active nav highlight + fade-in cards
+const pills = Array.from(document.querySelectorAll('.catpill'));
+const sections = Array.from(document.querySelectorAll('.category-section'));
+const cards = Array.from(document.querySelectorAll('.card'));
+
+const cardObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); cardObserver.unobserve(e.target); } });
+}, { threshold: 0.12 });
+cards.forEach(c => cardObserver.observe(c));
+
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      pills.forEach(p => p.classList.toggle('active', p.dataset.target === e.target.id));
+    }
+  });
+}, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+sections.forEach(s => navObserver.observe(s));
+</script>
+</body>
+</html>
